@@ -1,0 +1,484 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/CS 232 Lab/Project3/simulation/modelsim
+Eadder16bit
+Z1 w1650839331
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 9
+R0
+Z5 8D:/CS 232 Lab/Project3/adder16Bit.vhd
+Z6 FD:/CS 232 Lab/Project3/adder16Bit.vhd
+l0
+L5 1
+VCSUBhnMMcj2hN^d_la^aC1
+!s100 aA5F0;UD`WaSKh@BcnjH=2
+Z7 OV;C;2020.1;71
+31
+Z8 !s110 1651822106
+!i10b 1
+Z9 !s108 1651822106.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/adder16Bit.vhd|
+Z11 !s107 D:/CS 232 Lab/Project3/adder16Bit.vhd|
+!i113 1
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Aarc
+R2
+R3
+R4
+DEx4 work 10 adder16bit 0 22 CSUBhnMMcj2hN^d_la^aC1
+!i122 9
+l32
+L14 88
+V0XREYBnUDTkd31=LP8Y]I1
+!s100 UlbfjA?W=m@6P78DZ0feF1
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eadder_logic
+Z14 w1650104055
+R2
+R3
+R4
+!i122 10
+R0
+Z15 8D:/CS 232 Lab/Project3/adder_logic.vhd
+Z16 FD:/CS 232 Lab/Project3/adder_logic.vhd
+l0
+L5 1
+VaN0QD^HG5z6l<4N[95FFc3
+!s100 `J4a[@DF<2:b[jh`mA_M^2
+R7
+31
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/adder_logic.vhd|
+!s107 D:/CS 232 Lab/Project3/adder_logic.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 11 adder_logic 0 22 aN0QD^HG5z6l<4N[95FFc3
+!i122 10
+l16
+L14 7
+V9jTi_eM1LP8XWb^35JeL31
+!s100 Vd60SMS3FhVHJ?<?6Xlg32
+R7
+31
+R8
+!i10b 1
+R9
+R17
+Z18 !s107 D:/CS 232 Lab/Project3/adder_logic.vhd|
+!i113 1
+R12
+R13
+Ealu
+Z19 w1650836575
+R2
+R3
+R4
+!i122 8
+R0
+Z20 8D:/CS 232 Lab/Project3/ALU.vhd
+Z21 FD:/CS 232 Lab/Project3/ALU.vhd
+l0
+L5 1
+V?86Z]SAXGJJJUlbg^LaIP0
+!s100 N<YaP:m?hS]z82Dg:V^:L0
+R7
+31
+Z22 !s110 1651822105
+!i10b 1
+Z23 !s108 1651822105.000000
+Z24 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/ALU.vhd|
+Z25 !s107 D:/CS 232 Lab/Project3/ALU.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 3 alu 0 22 ?86Z]SAXGJJJUlbg^LaIP0
+!i122 8
+l41
+L14 53
+VSIG[oDa1X?5;l3X]YYPF71
+!s100 NFAK`]3WS]>H=ANT[YzJz3
+R7
+31
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R12
+R13
+Econtrol_path
+Z26 w1650839126
+R2
+R3
+R4
+!i122 7
+R0
+Z27 8D:/CS 232 Lab/Project3/control_path.vhd
+Z28 FD:/CS 232 Lab/Project3/control_path.vhd
+l0
+L5 1
+VA`=G1mRNh<92B3VHGK9]:1
+!s100 U]YaDKjNVRb>ULa6lWSJo2
+R7
+31
+R22
+!i10b 1
+R23
+Z29 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/control_path.vhd|
+Z30 !s107 D:/CS 232 Lab/Project3/control_path.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 12 control_path 0 22 A`=G1mRNh<92B3VHGK9]:1
+!i122 7
+l56
+L25 573
+V9l@jF0LWQdb6nAVMA=4Sg2
+!s100 dNVEUCTTckzhThPfciPVh0
+R7
+31
+R22
+!i10b 1
+R23
+R29
+R30
+!i113 1
+R12
+R13
+Edatapath
+Z31 w1651821872
+R2
+R3
+R4
+!i122 6
+R0
+Z32 8D:/CS 232 Lab/Project3/datapath.vhd
+Z33 FD:/CS 232 Lab/Project3/datapath.vhd
+l0
+L5 1
+V>lmZ_`2;N3YKOY5Zca1zC2
+!s100 <N2E^>laFbJJNibHID47Y1
+R7
+31
+R22
+!i10b 1
+R23
+Z34 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/datapath.vhd|
+Z35 !s107 D:/CS 232 Lab/Project3/datapath.vhd|
+!i113 1
+R12
+R13
+Adp_arc
+R2
+R3
+R4
+DEx4 work 8 datapath 0 22 >lmZ_`2;N3YKOY5Zca1zC2
+!i122 6
+l105
+L17 140
+VBX72kZYIH@^D3HUl0lKEF0
+!s100 lP@W>LS9f>=R5o@ea]a<`1
+R7
+31
+R22
+!i10b 1
+R23
+R34
+R35
+!i113 1
+R12
+R13
+Emux2x1
+Z36 w1650836742
+R2
+R3
+R4
+!i122 5
+R0
+Z37 8D:/CS 232 Lab/Project3/Mux2x1.vhd
+Z38 FD:/CS 232 Lab/Project3/Mux2x1.vhd
+l0
+L5 1
+V]>7neCRPazE>oN4zmmTAT0
+!s100 LlZg[PabD=WBC_9[2mA^^1
+R7
+31
+R22
+!i10b 1
+R23
+Z39 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/Mux2x1.vhd|
+Z40 !s107 D:/CS 232 Lab/Project3/Mux2x1.vhd|
+!i113 1
+R12
+R13
+Aarc
+R2
+R3
+R4
+DEx4 work 6 mux2x1 0 22 ]>7neCRPazE>oN4zmmTAT0
+!i122 5
+l15
+L14 6
+Vk9BCH5FW584f42YjXf_c?3
+!s100 8Xc1SW:1zR4c8QkK7ji>Y1
+R7
+31
+R22
+!i10b 1
+R23
+R39
+R40
+!i113 1
+R12
+R13
+Enand16
+Z41 w1650834482
+R2
+R3
+R4
+!i122 4
+R0
+Z42 8D:/CS 232 Lab/Project3/nand16.vhd
+Z43 FD:/CS 232 Lab/Project3/nand16.vhd
+l0
+L5 1
+V45QQ2Y4R7cJFE9giTRSMm2
+!s100 K`hTUP6jDmTG7^j954>3B1
+R7
+31
+R22
+!i10b 1
+R23
+Z44 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/nand16.vhd|
+Z45 !s107 D:/CS 232 Lab/Project3/nand16.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 6 nand16 0 22 45QQ2Y4R7cJFE9giTRSMm2
+!i122 4
+l15
+L13 7
+VdEjNedLY_^^]aOddh<8h;0
+!s100 K^MX9<P4bgRQBz>d?IVj<0
+R7
+31
+R22
+!i10b 1
+R23
+R44
+R45
+!i113 1
+R12
+R13
+Eram
+Z46 w1650835300
+R2
+R3
+R4
+!i122 3
+R0
+Z47 8D:/CS 232 Lab/Project3/RAM.vhd
+Z48 FD:/CS 232 Lab/Project3/RAM.vhd
+l0
+L6 1
+VAPVWN2kcz;cMkDncX<[=52
+!s100 _0>FBLUJd5[4efEClY2Q>3
+R7
+31
+Z49 !s110 1651822104
+!i10b 1
+Z50 !s108 1651822104.000000
+Z51 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/RAM.vhd|
+Z52 !s107 D:/CS 232 Lab/Project3/RAM.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 3 ram 0 22 APVWN2kcz;cMkDncX<[=52
+!i122 3
+l19
+L15 16
+VLBSKIAmDZW[fd9Y<OiA0P2
+!s100 <FOlOiLfHT6NSB=_B9SQf2
+R7
+31
+R49
+!i10b 1
+R50
+R51
+R52
+!i113 1
+R12
+R13
+Eregister_file
+Z53 w1650837197
+R2
+R3
+R4
+!i122 2
+R0
+Z54 8D:/CS 232 Lab/Project3/register_file.vhd
+Z55 FD:/CS 232 Lab/Project3/register_file.vhd
+l0
+L5 1
+V5:U?TJ4USRahk]PQHEV]`3
+!s100 =hBANYIKj?AO[ChW>U^5F0
+R7
+31
+R49
+!i10b 1
+R50
+Z56 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/register_file.vhd|
+Z57 !s107 D:/CS 232 Lab/Project3/register_file.vhd|
+!i113 1
+R12
+R13
+Abehave
+R2
+R3
+R4
+DEx4 work 13 register_file 0 22 5:U?TJ4USRahk]PQHEV]`3
+!i122 2
+l19
+L16 16
+VR]eHC=MYSNQ<cX=DTa2W10
+!s100 ^3H5@S2V<JBoPHn9j0A@i0
+R7
+31
+R49
+!i10b 1
+R50
+R56
+R57
+!i113 1
+R12
+R13
+Eregister_onebit
+Z58 w1650102127
+R2
+R3
+R4
+!i122 1
+R0
+Z59 8D:/CS 232 Lab/Project3/register_OneBit.vhd
+Z60 FD:/CS 232 Lab/Project3/register_OneBit.vhd
+l0
+L5 1
+V9e3J0Cf_22W;30LOznd7F0
+!s100 NZUgKG`YYQl>=TjV^7<fg2
+R7
+31
+R49
+!i10b 1
+R50
+Z61 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/register_OneBit.vhd|
+Z62 !s107 D:/CS 232 Lab/Project3/register_OneBit.vhd|
+!i113 1
+R12
+R13
+Aarch
+R2
+R3
+R4
+DEx4 work 15 register_onebit 0 22 9e3J0Cf_22W;30LOznd7F0
+!i122 1
+l17
+Z63 L15 15
+VLl8fKPzEA>egjF@dhGP002
+!s100 YQ=E4;^E:Z5biGd=Pa`W40
+R7
+31
+R49
+!i10b 1
+R50
+R61
+R62
+!i113 1
+R12
+R13
+Eregister_sixteenbit
+Z64 w1650834895
+R2
+R3
+R4
+!i122 0
+R0
+Z65 8D:/CS 232 Lab/Project3/register_SixteenBit.vhd
+Z66 FD:/CS 232 Lab/Project3/register_SixteenBit.vhd
+l0
+L5 1
+VP<8k5YgCU>K]02YGVH@Pd2
+!s100 GV9aJDW9F=I271NBmUNLS0
+R7
+31
+R49
+!i10b 1
+Z67 !s108 1651822103.000000
+Z68 !s90 -reportprogress|300|-93|-work|work|D:/CS 232 Lab/Project3/register_SixteenBit.vhd|
+Z69 !s107 D:/CS 232 Lab/Project3/register_SixteenBit.vhd|
+!i113 1
+R12
+R13
+Aarch
+R2
+R3
+R4
+DEx4 work 19 register_sixteenbit 0 22 P<8k5YgCU>K]02YGVH@Pd2
+!i122 0
+l17
+R63
+VN]WVQ^TalilMHMDHo2XDc0
+!s100 eg1H6f9]PkCC?>A]_^j4J2
+R7
+31
+R49
+!i10b 1
+R67
+R68
+R69
+!i113 1
+R12
+R13

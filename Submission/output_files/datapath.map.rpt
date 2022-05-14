@@ -1,0 +1,1536 @@
+Analysis & Synthesis report for datapath
+Wed May 11 13:12:52 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |datapath|control_path:state_machine|state
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for register_file:registerFile|altsyncram:registers_rtl_0|altsyncram_3bs1:auto_generated
+ 16. Source assignments for register_file:registerFile|altsyncram:registers_rtl_1|altsyncram_3bs1:auto_generated
+ 17. Source assignments for RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated
+ 18. Parameter Settings for Inferred Entity Instance: register_file:registerFile|altsyncram:registers_rtl_0
+ 19. Parameter Settings for Inferred Entity Instance: register_file:registerFile|altsyncram:registers_rtl_1
+ 20. Parameter Settings for Inferred Entity Instance: RAM:memory|altsyncram:ram_array_rtl_0
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "alu:a|adder16Bit:S1"
+ 23. Port Connectivity Checks: "alu:a|adder16Bit:A1"
+ 24. Post-Synthesis Netlist Statistics for Top Partition
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed May 11 13:12:52 2022       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; datapath                                    ;
+; Top-level Entity Name           ; datapath                                    ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 102                                         ;
+; Total pins                      ; 40                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 1,048,832                                   ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; datapath           ; datapath           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                               ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                   ; Library ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------+---------+
+; register_SixteenBit.vhd                         ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd                                ;         ;
+; register_OneBit.vhd                             ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/register_OneBit.vhd                                    ;         ;
+; register_file.vhd                               ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/register_file.vhd                                      ;         ;
+; RAM.vhd                                         ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/RAM.vhd                                                ;         ;
+; nand16.vhd                                      ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/nand16.vhd                                             ;         ;
+; Mux2x1.vhd                                      ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/Mux2x1.vhd                                             ;         ;
+; datapath.vhd                                    ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/datapath.vhd                                           ;         ;
+; control_path.vhd                                ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/control_path.vhd                                       ;         ;
+; ALU.vhd                                         ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/ALU.vhd                                                ;         ;
+; adder16Bit.vhd                                  ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/adder16Bit.vhd                                         ;         ;
+; adder_logic.vhd                                 ; yes             ; User VHDL File                                        ; D:/CS 232 Lab/IITB-RISC/adder_logic.vhd                                        ;         ;
+; altsyncram.tdf                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc                           ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal201.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/aglobal201.inc        ;         ;
+; a_rdenreg.inc                                   ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                                      ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                                      ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                                    ; yes             ; Megafunction                                          ; c:/intelfpga_lite/20.1.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_3bs1.tdf                          ; yes             ; Auto-Generated Megafunction                           ; D:/CS 232 Lab/IITB-RISC/db/altsyncram_3bs1.tdf                                 ;         ;
+; db/datapath.ram0_register_file_87c776fc.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; D:/CS 232 Lab/IITB-RISC/db/datapath.ram0_register_file_87c776fc.hdl.mif        ;         ;
+; db/altsyncram_bgr1.tdf                          ; yes             ; Auto-Generated Megafunction                           ; D:/CS 232 Lab/IITB-RISC/db/altsyncram_bgr1.tdf                                 ;         ;
+; db/datapath.ram0_ram_15119.hdl.mif              ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; D:/CS 232 Lab/IITB-RISC/db/datapath.ram0_ram_15119.hdl.mif                     ;         ;
+; db/decode_dla.tdf                               ; yes             ; Auto-Generated Megafunction                           ; D:/CS 232 Lab/IITB-RISC/db/decode_dla.tdf                                      ;         ;
+; db/mux_chb.tdf                                  ; yes             ; Auto-Generated Megafunction                           ; D:/CS 232 Lab/IITB-RISC/db/mux_chb.tdf                                         ;         ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 369       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 556       ;
+;     -- 7 input functions                    ; 8         ;
+;     -- 6 input functions                    ; 173       ;
+;     -- 5 input functions                    ; 51        ;
+;     -- 4 input functions                    ; 56        ;
+;     -- <=3 input functions                  ; 268       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 102       ;
+;                                             ;           ;
+; I/O pins                                    ; 40        ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 1048832   ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 262       ;
+; Total fan-out                               ; 5039      ;
+; Average fan-out                             ; 5.61      ;
++---------------------------------------------+-----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                               ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |datapath                                 ; 556 (0)             ; 102 (0)                   ; 1048832           ; 0          ; 40   ; 0            ; |datapath                                                                                         ; datapath            ; work         ;
+;    |Mux2x1:\address:0:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:0:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:10:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:10:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:11:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:11:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:12:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:12:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:13:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:13:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:14:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:14:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:15:addnode|           ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:15:addnode                                                              ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:1:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:1:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:2:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:2:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:3:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:3:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:4:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:4:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:5:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:5:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:6:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:6:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:7:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:7:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:8:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:8:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\address:9:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\address:9:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:0:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:0:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:10:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:10:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:11:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:11:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:12:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:12:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:13:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:13:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:14:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:14:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:15:addnode|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:15:addnode                                                               ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:1:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:1:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:2:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:2:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:3:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:3:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:4:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:4:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:5:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:5:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:6:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:6:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:7:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:7:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:8:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:8:addnode                                                                ; Mux2x1              ; work         ;
+;    |Mux2x1:\datain:9:addnode|             ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|Mux2x1:\datain:9:addnode                                                                ; Mux2x1              ; work         ;
+;    |RAM:memory|                           ; 56 (0)              ; 3 (0)                     ; 1048576           ; 0          ; 0    ; 0            ; |datapath|RAM:memory                                                                              ; RAM                 ; work         ;
+;       |altsyncram:ram_array_rtl_0|        ; 56 (0)              ; 3 (0)                     ; 1048576           ; 0          ; 0    ; 0            ; |datapath|RAM:memory|altsyncram:ram_array_rtl_0                                                   ; altsyncram          ; work         ;
+;          |altsyncram_bgr1:auto_generated| ; 56 (0)              ; 3 (3)                     ; 1048576           ; 0          ; 0    ; 0            ; |datapath|RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated                    ; altsyncram_bgr1     ; work         ;
+;             |decode_dla:decode2|          ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated|decode_dla:decode2 ; decode_dla          ; work         ;
+;             |mux_chb:mux3|                ; 48 (48)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated|mux_chb:mux3       ; mux_chb             ; work         ;
+;    |alu:a|                                ; 28 (13)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|alu:a                                                                                   ; alu                 ; work         ;
+;       |adder16Bit:A1|                     ; 15 (15)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|alu:a|adder16Bit:A1                                                                     ; adder16Bit          ; work         ;
+;    |control_path:state_machine|           ; 440 (440)           ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|control_path:state_machine                                                              ; control_path        ; work         ;
+;    |register_OneBit:carryFlag|            ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_OneBit:carryFlag                                                               ; register_OneBit     ; work         ;
+;    |register_OneBit:zeroFlag|             ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_OneBit:zeroFlag                                                                ; register_OneBit     ; work         ;
+;    |register_SixteenBit:inst_register|    ; 0 (0)               ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_SixteenBit:inst_register                                                       ; register_SixteenBit ; work         ;
+;    |register_SixteenBit:program_counter|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_SixteenBit:program_counter                                                     ; register_SixteenBit ; work         ;
+;    |register_SixteenBit:temp_register1|   ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_SixteenBit:temp_register1                                                      ; register_SixteenBit ; work         ;
+;    |register_SixteenBit:temp_register2|   ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_SixteenBit:temp_register2                                                      ; register_SixteenBit ; work         ;
+;    |register_SixteenBit:temp_register3|   ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_SixteenBit:temp_register3                                                      ; register_SixteenBit ; work         ;
+;    |register_file:registerFile|           ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |datapath|register_file:registerFile                                                              ; register_file       ; work         ;
+;       |altsyncram:registers_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 128               ; 0          ; 0    ; 0            ; |datapath|register_file:registerFile|altsyncram:registers_rtl_0                                   ; altsyncram          ; work         ;
+;          |altsyncram_3bs1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 128               ; 0          ; 0    ; 0            ; |datapath|register_file:registerFile|altsyncram:registers_rtl_0|altsyncram_3bs1:auto_generated    ; altsyncram_3bs1     ; work         ;
+;       |altsyncram:registers_rtl_1|        ; 0 (0)               ; 0 (0)                     ; 128               ; 0          ; 0    ; 0            ; |datapath|register_file:registerFile|altsyncram:registers_rtl_1                                   ; altsyncram          ; work         ;
+;          |altsyncram_3bs1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 128               ; 0          ; 0    ; 0            ; |datapath|register_file:registerFile|altsyncram:registers_rtl_1|altsyncram_3bs1:auto_generated    ; altsyncram_3bs1     ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                  ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-------------------------------------------------+
+; Name                                                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF                                             ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-------------------------------------------------+
+; RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated|ALTSYNCRAM                 ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; db/datapath.ram0_RAM_15119.hdl.mif              ;
+; register_file:registerFile|altsyncram:registers_rtl_0|altsyncram_3bs1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8            ; 16           ; 8            ; 16           ; 128     ; db/datapath.ram0_register_file_87c776fc.hdl.mif ;
+; register_file:registerFile|altsyncram:registers_rtl_1|altsyncram_3bs1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8            ; 16           ; 8            ; 16           ; 128     ; db/datapath.ram0_register_file_87c776fc.hdl.mif ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-------------------------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |datapath|control_path:state_machine|state                                                                                                                                                                                                                                                              ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+; Name      ; state.S24 ; state.S23 ; state.S22 ; state.S21 ; state.S20 ; state.S19 ; state.S18 ; state.S17 ; state.S16 ; state.S15 ; state.S14 ; state.S13 ; state.S12 ; state.S11 ; state.S10 ; state.S9 ; state.S8 ; state.S7 ; state.S6 ; state.S5 ; state.S4 ; state.S3 ; state.S2 ; state.S1 ; state.S01 ; state.S0 ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+; state.S0  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 0        ;
+; state.S01 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1         ; 1        ;
+; state.S1  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0         ; 1        ;
+; state.S2  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0         ; 1        ;
+; state.S3  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0         ; 1        ;
+; state.S4  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S5  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S6  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S7  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S8  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S9  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S10 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S11 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S12 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S13 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S14 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S15 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S16 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S17 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S18 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S19 ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S20 ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S21 ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S22 ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S23 ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
+; state.S24 ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0         ; 1        ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+-----------+----------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                    ;
++------------------------------------------------------+----------------------------------------+------------------------+
+; Latch Name                                           ; Latch Enable Signal                    ; Free of Timing Hazards ;
++------------------------------------------------------+----------------------------------------+------------------------+
+; control_path:state_machine|op_code[12]               ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|op_code[13]               ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|op_code[14]               ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|op_code[15]               ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|alu_b[0]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[0]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[2]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[2]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[1]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[1]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[3]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[3]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|ir_in[0]                  ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|ir_in[1]                  ; control_path:state_machine|state.S1    ; yes                    ;
+; control_path:state_machine|mem_add[15]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[14]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[13]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_din[12]               ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|mem_add[0]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[1]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[2]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[3]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[4]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[5]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[6]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[7]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[8]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[9]                ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[10]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[11]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_add[12]               ; control_path:state_machine|Selector206 ; yes                    ;
+; control_path:state_machine|mem_din[13]               ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|mem_din[14]               ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|mem_din[15]               ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|alu_b[15]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[15]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_oper[0]               ; control_path:state_machine|Selector149 ; yes                    ;
+; control_path:state_machine|alu_b[14]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[14]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[13]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[13]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[12]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[12]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[11]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[11]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[10]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[10]                 ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[9]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[9]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[8]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[8]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[7]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[7]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[6]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[6]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[5]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[5]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_b[4]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|alu_a[4]                  ; control_path:state_machine|WideOr37    ; yes                    ;
+; control_path:state_machine|t2_in[0]                  ; control_path:state_machine|WideOr45    ; yes                    ;
+; control_path:state_machine|rf_wen                    ; control_path:state_machine|state.S20   ; yes                    ;
+; control_path:state_machine|rf_d3[0]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|rf_a3[0]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|rf_a3[1]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|rf_a3[2]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|rf_a1[0]                  ; control_path:state_machine|Selector189 ; yes                    ;
+; control_path:state_machine|rf_a1[1]                  ; control_path:state_machine|Selector189 ; yes                    ;
+; control_path:state_machine|rf_a1[2]                  ; control_path:state_machine|Selector189 ; yes                    ;
+; control_path:state_machine|t1_in[0]                  ; control_path:state_machine|WideOr43    ; yes                    ;
+; control_path:state_machine|pc_in[0]                  ; control_path:state_machine|WideOr42    ; yes                    ;
+; control_path:state_machine|pc_wen                    ; control_path:state_machine|state.S20   ; yes                    ;
+; control_path:state_machine|t2_in[2]                  ; control_path:state_machine|WideOr45    ; yes                    ;
+; control_path:state_machine|t2_in[1]                  ; control_path:state_machine|WideOr45    ; yes                    ;
+; control_path:state_machine|rf_d3[2]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|t1_in[2]                  ; control_path:state_machine|WideOr43    ; yes                    ;
+; control_path:state_machine|pc_in[2]                  ; control_path:state_machine|WideOr42    ; yes                    ;
+; control_path:state_machine|rf_d3[1]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|t1_in[1]                  ; control_path:state_machine|WideOr43    ; yes                    ;
+; control_path:state_machine|pc_in[1]                  ; control_path:state_machine|WideOr42    ; yes                    ;
+; control_path:state_machine|rf_d3[3]                  ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|t1_in[3]                  ; control_path:state_machine|WideOr43    ; yes                    ;
+; control_path:state_machine|t2_in[3]                  ; control_path:state_machine|WideOr45    ; yes                    ;
+; control_path:state_machine|pc_in[3]                  ; control_path:state_machine|WideOr42    ; yes                    ;
+; control_path:state_machine|mem_din[0]                ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|mem_din[1]                ; control_path:state_machine|Selector59  ; yes                    ;
+; control_path:state_machine|rf_d3[15]                 ; control_path:state_machine|Selector80  ; yes                    ;
+; control_path:state_machine|t3_in[15]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t1_in[15]                 ; control_path:state_machine|WideOr43    ; yes                    ;
+; control_path:state_machine|t3_in[7]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[6]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[14]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[3]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[11]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[2]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[10]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[5]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[13]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[4]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[12]                 ; control_path:state_machine|WideOr53    ; yes                    ;
+; control_path:state_machine|t3_in[1]                  ; control_path:state_machine|WideOr53    ; yes                    ;
+; Number of user-specified and inferred latches = 181  ;                                        ;                        ;
++------------------------------------------------------+----------------------------------------+------------------------+
+Table restricted to first 100 entries. Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; control_path:state_machine|state.S4   ; Lost fanout                            ;
+; control_path:state_machine|state.S15  ; Stuck at GND due to stuck port data_in ;
+; control_path:state_machine|state.S01  ; Stuck at GND due to stuck port data_in ;
+; control_path:state_machine|state.S18  ; Stuck at GND due to stuck port data_in ;
+; control_path:state_machine|state.S16  ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 5 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 102   ;
+; Number of registers using Synchronous Clear  ; 9     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 80    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                               ;
++----------------------------------------+--------------------------------------------+------+
+; Register Name                          ; Megafunction                               ; Type ;
++----------------------------------------+--------------------------------------------+------+
+; register_file:registerFile|out1[0..15] ; register_file:registerFile|registers_rtl_0 ; RAM  ;
+; register_file:registerFile|out2[0..15] ; register_file:registerFile|registers_rtl_1 ; RAM  ;
+; RAM:memory|output[0..15]               ; RAM:memory|ram_array_rtl_0                 ; RAM  ;
++----------------------------------------+--------------------------------------------+------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector36  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector186 ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector159 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector60  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector72  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector183 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |datapath|control_path:state_machine|Selector202 ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector97  ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |datapath|control_path:state_machine|Selector111 ;
+; 14:1               ; 7 bits    ; 63 LEs        ; 49 LEs               ; 14 LEs                 ; No         ; |datapath|control_path:state_machine|state       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Source assignments for register_file:registerFile|altsyncram:registers_rtl_0|altsyncram_3bs1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Source assignments for register_file:registerFile|altsyncram:registers_rtl_1|altsyncram_3bs1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Source assignments for RAM:memory|altsyncram:ram_array_rtl_0|altsyncram_bgr1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------+
+; Assignment                      ; Value              ; From ; To                            ;
++---------------------------------+--------------------+------+-------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                             ;
++---------------------------------+--------------------+------+-------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: register_file:registerFile|altsyncram:registers_rtl_0 ;
++------------------------------------+-------------------------------------------------+-----------------+
+; Parameter Name                     ; Value                                           ; Type            ;
++------------------------------------+-------------------------------------------------+-----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                               ; Untyped         ;
+; AUTO_CARRY_CHAINS                  ; ON                                              ; AUTO_CARRY      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                             ; IGNORE_CARRY    ;
+; AUTO_CASCADE_CHAINS                ; ON                                              ; AUTO_CASCADE    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                             ; IGNORE_CASCADE  ;
+; WIDTH_BYTEENA                      ; 1                                               ; Untyped         ;
+; OPERATION_MODE                     ; DUAL_PORT                                       ; Untyped         ;
+; WIDTH_A                            ; 16                                              ; Untyped         ;
+; WIDTHAD_A                          ; 3                                               ; Untyped         ;
+; NUMWORDS_A                         ; 8                                               ; Untyped         ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                    ; Untyped         ;
+; ADDRESS_ACLR_A                     ; NONE                                            ; Untyped         ;
+; OUTDATA_ACLR_A                     ; NONE                                            ; Untyped         ;
+; WRCONTROL_ACLR_A                   ; NONE                                            ; Untyped         ;
+; INDATA_ACLR_A                      ; NONE                                            ; Untyped         ;
+; BYTEENA_ACLR_A                     ; NONE                                            ; Untyped         ;
+; WIDTH_B                            ; 16                                              ; Untyped         ;
+; WIDTHAD_B                          ; 3                                               ; Untyped         ;
+; NUMWORDS_B                         ; 8                                               ; Untyped         ;
+; INDATA_REG_B                       ; CLOCK1                                          ; Untyped         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                          ; Untyped         ;
+; RDCONTROL_REG_B                    ; CLOCK1                                          ; Untyped         ;
+; ADDRESS_REG_B                      ; CLOCK0                                          ; Untyped         ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                    ; Untyped         ;
+; BYTEENA_REG_B                      ; CLOCK1                                          ; Untyped         ;
+; INDATA_ACLR_B                      ; NONE                                            ; Untyped         ;
+; WRCONTROL_ACLR_B                   ; NONE                                            ; Untyped         ;
+; ADDRESS_ACLR_B                     ; NONE                                            ; Untyped         ;
+; OUTDATA_ACLR_B                     ; NONE                                            ; Untyped         ;
+; RDCONTROL_ACLR_B                   ; NONE                                            ; Untyped         ;
+; BYTEENA_ACLR_B                     ; NONE                                            ; Untyped         ;
+; WIDTH_BYTEENA_A                    ; 1                                               ; Untyped         ;
+; WIDTH_BYTEENA_B                    ; 1                                               ; Untyped         ;
+; RAM_BLOCK_TYPE                     ; AUTO                                            ; Untyped         ;
+; BYTE_SIZE                          ; 8                                               ; Untyped         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                        ; Untyped         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                            ; Untyped         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                            ; Untyped         ;
+; INIT_FILE                          ; db/datapath.ram0_register_file_87c776fc.hdl.mif ; Untyped         ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                          ; Untyped         ;
+; MAXIMUM_DEPTH                      ; 0                                               ; Untyped         ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                 ; Untyped         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                 ; Untyped         ;
+; ENABLE_ECC                         ; FALSE                                           ; Untyped         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                           ; Untyped         ;
+; WIDTH_ECCSTATUS                    ; 3                                               ; Untyped         ;
+; DEVICE_FAMILY                      ; Cyclone V                                       ; Untyped         ;
+; CBXI_PARAMETER                     ; altsyncram_3bs1                                 ; Untyped         ;
++------------------------------------+-------------------------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: register_file:registerFile|altsyncram:registers_rtl_1 ;
++------------------------------------+-------------------------------------------------+-----------------+
+; Parameter Name                     ; Value                                           ; Type            ;
++------------------------------------+-------------------------------------------------+-----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                               ; Untyped         ;
+; AUTO_CARRY_CHAINS                  ; ON                                              ; AUTO_CARRY      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                             ; IGNORE_CARRY    ;
+; AUTO_CASCADE_CHAINS                ; ON                                              ; AUTO_CASCADE    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                             ; IGNORE_CASCADE  ;
+; WIDTH_BYTEENA                      ; 1                                               ; Untyped         ;
+; OPERATION_MODE                     ; DUAL_PORT                                       ; Untyped         ;
+; WIDTH_A                            ; 16                                              ; Untyped         ;
+; WIDTHAD_A                          ; 3                                               ; Untyped         ;
+; NUMWORDS_A                         ; 8                                               ; Untyped         ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                    ; Untyped         ;
+; ADDRESS_ACLR_A                     ; NONE                                            ; Untyped         ;
+; OUTDATA_ACLR_A                     ; NONE                                            ; Untyped         ;
+; WRCONTROL_ACLR_A                   ; NONE                                            ; Untyped         ;
+; INDATA_ACLR_A                      ; NONE                                            ; Untyped         ;
+; BYTEENA_ACLR_A                     ; NONE                                            ; Untyped         ;
+; WIDTH_B                            ; 16                                              ; Untyped         ;
+; WIDTHAD_B                          ; 3                                               ; Untyped         ;
+; NUMWORDS_B                         ; 8                                               ; Untyped         ;
+; INDATA_REG_B                       ; CLOCK1                                          ; Untyped         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                          ; Untyped         ;
+; RDCONTROL_REG_B                    ; CLOCK1                                          ; Untyped         ;
+; ADDRESS_REG_B                      ; CLOCK0                                          ; Untyped         ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                    ; Untyped         ;
+; BYTEENA_REG_B                      ; CLOCK1                                          ; Untyped         ;
+; INDATA_ACLR_B                      ; NONE                                            ; Untyped         ;
+; WRCONTROL_ACLR_B                   ; NONE                                            ; Untyped         ;
+; ADDRESS_ACLR_B                     ; NONE                                            ; Untyped         ;
+; OUTDATA_ACLR_B                     ; NONE                                            ; Untyped         ;
+; RDCONTROL_ACLR_B                   ; NONE                                            ; Untyped         ;
+; BYTEENA_ACLR_B                     ; NONE                                            ; Untyped         ;
+; WIDTH_BYTEENA_A                    ; 1                                               ; Untyped         ;
+; WIDTH_BYTEENA_B                    ; 1                                               ; Untyped         ;
+; RAM_BLOCK_TYPE                     ; AUTO                                            ; Untyped         ;
+; BYTE_SIZE                          ; 8                                               ; Untyped         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                        ; Untyped         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                            ; Untyped         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                            ; Untyped         ;
+; INIT_FILE                          ; db/datapath.ram0_register_file_87c776fc.hdl.mif ; Untyped         ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                          ; Untyped         ;
+; MAXIMUM_DEPTH                      ; 0                                               ; Untyped         ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                          ; Untyped         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                 ; Untyped         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                 ; Untyped         ;
+; ENABLE_ECC                         ; FALSE                                           ; Untyped         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                           ; Untyped         ;
+; WIDTH_ECCSTATUS                    ; 3                                               ; Untyped         ;
+; DEVICE_FAMILY                      ; Cyclone V                                       ; Untyped         ;
+; CBXI_PARAMETER                     ; altsyncram_3bs1                                 ; Untyped         ;
++------------------------------------+-------------------------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: RAM:memory|altsyncram:ram_array_rtl_0   ;
++------------------------------------+------------------------------------+----------------+
+; Parameter Name                     ; Value                              ; Type           ;
++------------------------------------+------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                  ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                 ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                 ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                  ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                          ; Untyped        ;
+; WIDTH_A                            ; 16                                 ; Untyped        ;
+; WIDTHAD_A                          ; 16                                 ; Untyped        ;
+; NUMWORDS_A                         ; 65536                              ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                       ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                               ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                               ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                               ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                               ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                               ; Untyped        ;
+; WIDTH_B                            ; 16                                 ; Untyped        ;
+; WIDTHAD_B                          ; 16                                 ; Untyped        ;
+; NUMWORDS_B                         ; 65536                              ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                             ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                             ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                             ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                             ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                       ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                             ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                               ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                               ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                               ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                               ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                               ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                               ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                  ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                  ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                               ; Untyped        ;
+; BYTE_SIZE                          ; 8                                  ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                           ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ               ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ               ; Untyped        ;
+; INIT_FILE                          ; db/datapath.ram0_RAM_15119.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                             ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                  ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                             ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                             ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                    ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                    ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                              ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                              ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                  ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                          ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_bgr1                    ; Untyped        ;
++------------------------------------+------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                  ;
++-------------------------------------------+-------------------------------------------------------+
+; Name                                      ; Value                                                 ;
++-------------------------------------------+-------------------------------------------------------+
+; Number of entity instances                ; 3                                                     ;
+; Entity Instance                           ; register_file:registerFile|altsyncram:registers_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 16                                                    ;
+;     -- NUMWORDS_A                         ; 8                                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 16                                                    ;
+;     -- NUMWORDS_B                         ; 8                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
+; Entity Instance                           ; register_file:registerFile|altsyncram:registers_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 16                                                    ;
+;     -- NUMWORDS_A                         ; 8                                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 16                                                    ;
+;     -- NUMWORDS_B                         ; 8                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
+; Entity Instance                           ; RAM:memory|altsyncram:ram_array_rtl_0                 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 16                                                    ;
+;     -- NUMWORDS_A                         ; 65536                                                 ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 16                                                    ;
+;     -- NUMWORDS_B                         ; 65536                                                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                              ;
++-------------------------------------------+-------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "alu:a|adder16Bit:S1" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; cin  ; Input ; Info     ; Stuck at VCC          ;
++------+-------+----------+-----------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "alu:a|adder16Bit:A1" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; cin  ; Input ; Info     ; Stuck at GND          ;
++------+-------+----------+-----------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 102                         ;
+;     ENA               ; 78                          ;
+;     ENA SCLR          ; 2                           ;
+;     SCLR              ; 7                           ;
+;     plain             ; 15                          ;
+; arriav_lcell_comb     ; 558                         ;
+;     extend            ; 8                           ;
+;         7 data inputs ; 8                           ;
+;     normal            ; 550                         ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 256                         ;
+;         4 data inputs ; 56                          ;
+;         5 data inputs ; 51                          ;
+;         6 data inputs ; 173                         ;
+; boundary_port         ; 40                          ;
+; stratixv_ram_block    ; 160                         ;
+;                       ;                             ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.55                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed May 11 13:12:36 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off datapath -c datapath
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file se6.vhd
+    Info (12022): Found design unit 1: SE6-SE6_Arc File: D:/CS 232 Lab/IITB-RISC/SE6.vhd Line: 12
+    Info (12023): Found entity 1: SE6 File: D:/CS 232 Lab/IITB-RISC/SE6.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file register_sixteenbit.vhd
+    Info (12022): Found design unit 1: register_SixteenBit-arch File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 15
+    Info (12023): Found entity 1: register_SixteenBit File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file register_onebit.vhd
+    Info (12022): Found design unit 1: register_OneBit-arch File: D:/CS 232 Lab/IITB-RISC/register_OneBit.vhd Line: 14
+    Info (12023): Found entity 1: register_OneBit File: D:/CS 232 Lab/IITB-RISC/register_OneBit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info (12022): Found design unit 1: register_file-behave File: D:/CS 232 Lab/IITB-RISC/register_file.vhd Line: 16
+    Info (12023): Found entity 1: register_file File: D:/CS 232 Lab/IITB-RISC/register_file.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ram.vhd
+    Info (12022): Found design unit 1: RAM-behave File: D:/CS 232 Lab/IITB-RISC/RAM.vhd Line: 15
+    Info (12023): Found entity 1: RAM File: D:/CS 232 Lab/IITB-RISC/RAM.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file nand16.vhd
+    Info (12022): Found design unit 1: nand16-behave File: D:/CS 232 Lab/IITB-RISC/nand16.vhd Line: 13
+    Info (12023): Found entity 1: nand16 File: D:/CS 232 Lab/IITB-RISC/nand16.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mux2x1.vhd
+    Info (12022): Found design unit 1: Mux2x1-arc File: D:/CS 232 Lab/IITB-RISC/Mux2x1.vhd Line: 14
+    Info (12023): Found entity 1: Mux2x1 File: D:/CS 232 Lab/IITB-RISC/Mux2x1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: datapath-dp_arc File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 17
+    Info (12023): Found entity 1: datapath File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file control_path.vhd
+    Info (12022): Found design unit 1: control_path-behave File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 25
+    Info (12023): Found entity 1: control_path File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu-behave File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 14
+    Info (12023): Found entity 1: alu File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file adder16bit.vhd
+    Info (12022): Found design unit 1: adder16Bit-arc File: D:/CS 232 Lab/IITB-RISC/adder16Bit.vhd Line: 14
+    Info (12023): Found entity 1: adder16Bit File: D:/CS 232 Lab/IITB-RISC/adder16Bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file adder_logic.vhd
+    Info (12022): Found design unit 1: adder_logic-behave File: D:/CS 232 Lab/IITB-RISC/adder_logic.vhd Line: 14
+    Info (12023): Found entity 1: adder_logic File: D:/CS 232 Lab/IITB-RISC/adder_logic.vhd Line: 5
+Info (12127): Elaborating entity "datapath" for the top level hierarchy
+Info (12128): Elaborating entity "register_SixteenBit" for hierarchy "register_SixteenBit:program_counter" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 107
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:memory" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 110
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:registerFile" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 114
+Info (12128): Elaborating entity "register_OneBit" for hierarchy "register_OneBit:carryFlag" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 120
+Info (12128): Elaborating entity "alu" for hierarchy "alu:a" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 123
+Warning (10492): VHDL Process Statement warning at ALU.vhd(50): signal "c_a" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 50
+Warning (10492): VHDL Process Statement warning at ALU.vhd(59): signal "c_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 59
+Info (12128): Elaborating entity "nand16" for hierarchy "alu:a|nand16:N1" File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 42
+Info (12128): Elaborating entity "adder16Bit" for hierarchy "alu:a|adder16Bit:A1" File: D:/CS 232 Lab/IITB-RISC/ALU.vhd Line: 43
+Info (12128): Elaborating entity "adder_logic" for hierarchy "alu:a|adder16Bit:A1|adder_logic:\level1:15:GP1" File: D:/CS 232 Lab/IITB-RISC/adder16Bit.vhd Line: 56
+Info (12128): Elaborating entity "control_path" for hierarchy "control_path:state_machine" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 125
+Warning (10492): VHDL Process Statement warning at control_path.vhd(222): signal "sig" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 222
+Warning (10492): VHDL Process Statement warning at control_path.vhd(250): signal "sig" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 250
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "c_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "z_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "pc_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t1_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t2_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t3_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "rf_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "mem_wen", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "mem_add", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "ir_in", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "op_code", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "rf_a1", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "alu_a", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "alu_b", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "alu_oper", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "pc_in", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "rf_a2", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t1_in", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t2_in", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "sig", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "rf_d3", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "rf_a3", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "mem_din", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Warning (10631): VHDL Process Statement warning at control_path.vhd(58): inferring latch(es) for signal or variable "t3_in", which holds its previous value in one or more paths through the process File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_in[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_din[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a3[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a3[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a3[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_d3[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "sig[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_in[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_in[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a2[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a2[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a2[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_in[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_oper[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_oper[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_b[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "alu_a[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a1[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a1[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_a1[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "op_code[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "op_code[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "op_code[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "op_code[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "ir_in[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[0]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[1]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[2]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[3]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[4]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[5]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[6]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[7]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[8]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[9]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[10]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[11]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[12]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[13]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[14]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_add[15]" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "mem_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "rf_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t3_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t2_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "t1_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "pc_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "z_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (10041): Inferred latch for "c_wen" at control_path.vhd(58) File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+Info (12128): Elaborating entity "Mux2x1" for hierarchy "Mux2x1:\address:0:addnode" File: D:/CS 232 Lab/IITB-RISC/datapath.vhd Line: 138
+Warning (14026): LATCH primitive "control_path:state_machine|mem_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Warning (14026): LATCH primitive "control_path:state_machine|c_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Warning (14026): LATCH primitive "control_path:state_machine|z_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Warning (14026): LATCH primitive "control_path:state_machine|t3_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Warning (14026): LATCH primitive "control_path:state_machine|t2_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Warning (14026): LATCH primitive "control_path:state_machine|t1_wen" is permanently enabled File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 12
+Info (19000): Inferred 3 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "register_file:registerFile|registers_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 3
+        Info (286033): Parameter NUMWORDS_A set to 8
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 3
+        Info (286033): Parameter NUMWORDS_B set to 8
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/datapath.ram0_register_file_87c776fc.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "register_file:registerFile|registers_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 3
+        Info (286033): Parameter NUMWORDS_A set to 8
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 3
+        Info (286033): Parameter NUMWORDS_B set to 8
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/datapath.ram0_register_file_87c776fc.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "RAM:memory|ram_array_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 16
+        Info (286033): Parameter NUMWORDS_B set to 65536
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/datapath.ram0_RAM_15119.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "register_file:registerFile|altsyncram:registers_rtl_0"
+Info (12133): Instantiated megafunction "register_file:registerFile|altsyncram:registers_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "3"
+    Info (12134): Parameter "NUMWORDS_A" = "8"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "3"
+    Info (12134): Parameter "NUMWORDS_B" = "8"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/datapath.ram0_register_file_87c776fc.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_3bs1.tdf
+    Info (12023): Found entity 1: altsyncram_3bs1 File: D:/CS 232 Lab/IITB-RISC/db/altsyncram_3bs1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "RAM:memory|altsyncram:ram_array_rtl_0"
+Info (12133): Instantiated megafunction "RAM:memory|altsyncram:ram_array_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "16"
+    Info (12134): Parameter "NUMWORDS_B" = "65536"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/datapath.ram0_RAM_15119.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_bgr1.tdf
+    Info (12023): Found entity 1: altsyncram_bgr1 File: D:/CS 232 Lab/IITB-RISC/db/altsyncram_bgr1.tdf Line: 32
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_dla.tdf
+    Info (12023): Found entity 1: decode_dla File: D:/CS 232 Lab/IITB-RISC/db/decode_dla.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_chb.tdf
+    Info (12023): Found entity 1: mux_chb File: D:/CS 232 Lab/IITB-RISC/db/mux_chb.tdf Line: 23
+Warning (13012): Latch control_path:state_machine|alu_b[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_add[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S1 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_oper[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S7 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_b[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S9 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|alu_a[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[0] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|rf_a3[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register2|reg1[0] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|rf_a3[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S8 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_a3[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S8 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_a1[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register2|reg1[0] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|rf_a1[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S6 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_a1[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S6 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t1_in[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[2] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[1] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[3] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[15] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t3_in[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t1_in[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[1] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[0] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t3_in[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S20 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[14] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[13] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[12] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[4] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[5] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[6] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[7] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[8] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[9] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[10] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|rf_d3[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal register_SixteenBit:temp_register3|reg1[11] File: D:/CS 232 Lab/IITB-RISC/register_SixteenBit.vhd Line: 21
+Warning (13012): Latch control_path:state_machine|t1_in[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S23 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[15] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[14] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[13] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[12] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S14 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S5 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S5 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|t2_in[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S24 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|pc_in[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S19 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[2] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[3] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[7] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[6] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[11] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[10] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[5] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[4] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[9] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Warning (13012): Latch control_path:state_machine|mem_din[8] has unsafe behavior File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 58
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_path:state_machine|state.S13 File: D:/CS 232 Lab/IITB-RISC/control_path.vhd Line: 34
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 835 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 35 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 635 logic cells
+    Info (21064): Implemented 160 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 337 warnings
+    Info: Peak virtual memory: 4882 megabytes
+    Info: Processing ended: Wed May 11 13:12:52 2022
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:29
+
+
